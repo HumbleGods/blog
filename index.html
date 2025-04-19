@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog Preview Card</title>
+  <link rel="icon" href="assets/images/favicon-32x32.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Figtree', sans-serif;
+      background-color: #f4d04e;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid #000;
+      border-radius: 20px;
+      box-shadow: 8px 8px 0px #000;
+      width: 320px;
+      padding: 24px;
+      transition: 0.3s ease;
+    }
+
+    .card img.thumbnail {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .tag {
+      background-color: #f4d04e;
+      color: #000;
+      display: inline-block;
+      padding: 4px 12px;
+      font-weight: 800;
+      font-size: 12px;
+      border-radius: 4px;
+      margin-top: 16px;
+    }
+
+    .date {
+      font-size: 12px;
+      color: #444;
+      margin: 10px 0;
+    }
+
+    h1 {
+      font-size: 20px;
+      margin-bottom: 12px;
+      color: #000;
+    }
+
+    .description {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 20px;
+    }
+
+    .author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .author img {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+    }
+
+    .author span {
+      font-weight: 800;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <img src="assets/images/illustration-article.svg" alt="Article Image" class="thumbnail">
+    <span class="tag">Learning</span>
+    <p class="date">Published 21 Dec 2023</p>
+    <h1>HTML & CSS foundations</h1>
+    <p class="description">These languages are the backbone of every website, defining structure, content, and presentation.</p>
+    <div class="author">
+      <img src="assets/images/image-avatar.webp" alt="Greg Hooper">
+      <span>Greg Hooper</span>
+    </div>
+  </div>
+</body>
+</html>
