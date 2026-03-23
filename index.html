@@ -1,100 +1,371 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Blog Preview Card</title>
-  <link rel="icon" href="assets/images/favicon-32x32.png" />
-  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;800&display=swap" rel="stylesheet">
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>💖 A Special Message for You · Happy 23rd Birthday 💖</title>
+    <!-- Bootstrap 5 + Font Awesome + Google Fonts -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    body {
-      font-family: 'Figtree', sans-serif;
-      background-color: #f4d04e;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-    }
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1a142f 0%, #2a1e3c 50%, #1e1735 100%);
+            font-family: 'Poppins', 'Segoe UI', system-ui, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            position: relative;
+            overflow-x: hidden;
+        }
 
-    .card {
-      background: #fff;
-      border: 1px solid #000;
-      border-radius: 20px;
-      box-shadow: 8px 8px 0px #000;
-      width: 320px;
-      padding: 24px;
-      transition: 0.3s ease;
-    }
+        /* soft animated stars */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(2px 2px at 15% 30%, rgba(255,215,245,0.3) 1px, transparent 1px),
+                              radial-gradient(1.5px 1.5px at 75% 85%, rgba(255,200,230,0.35) 1px, transparent 1px),
+                              radial-gradient(1px 1px at 45% 60%, rgba(255,180,210,0.4) 1px, transparent 1px);
+            background-size: 60px 60px, 45px 45px, 80px 80px;
+            pointer-events: none;
+            z-index: 0;
+            animation: subtleTwinkle 8s infinite alternate;
+        }
 
-    .card img.thumbnail {
-      width: 100%;
-      border-radius: 10px;
-    }
+        @keyframes subtleTwinkle {
+            0% { opacity: 0.6; }
+            100% { opacity: 1; }
+        }
 
-    .tag {
-      background-color: #f4d04e;
-      color: #000;
-      display: inline-block;
-      padding: 4px 12px;
-      font-weight: 800;
-      font-size: 12px;
-      border-radius: 4px;
-      margin-top: 16px;
-    }
+        /* floating hearts animation */
+        .floating-heart-bg {
+            position: fixed;
+            font-size: 1rem;
+            pointer-events: none;
+            z-index: 1;
+            animation: floatHeart 6s ease-out forwards;
+            opacity: 0.7;
+        }
 
-    .date {
-      font-size: 12px;
-      color: #444;
-      margin: 10px 0;
-    }
+        @keyframes floatHeart {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-120px) rotate(15deg);
+                opacity: 0;
+            }
+        }
 
-    h1 {
-      font-size: 20px;
-      margin-bottom: 12px;
-      color: #000;
-    }
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap');
 
-    .description {
-      font-size: 14px;
-      color: #666;
-      margin-bottom: 20px;
-    }
+        .message-container {
+            max-width: 750px;
+            width: 100%;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+        }
 
-    .author {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
+        /* elegant glass card */
+        .love-card {
+            background: rgba(30, 22, 48, 0.65);
+            backdrop-filter: blur(16px);
+            border-radius: 3rem;
+            border: 1px solid rgba(255, 180, 210, 0.4);
+            box-shadow: 0 30px 50px -20px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 210, 230, 0.2);
+            transition: all 0.3s ease;
+        }
 
-    .author img {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-    }
+        .birthday-badge {
+            background: linear-gradient(125deg, #ff8aa8, #ff6b8f);
+            border-radius: 100px;
+            padding: 0.5rem 1.5rem;
+            display: inline-block;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            box-shadow: 0 6px 14px rgba(255, 90, 120, 0.3);
+        }
 
-    .author span {
-      font-weight: 800;
-      font-size: 14px;
-    }
-  </style>
+        .message-paragraph {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            line-height: 1.75;
+            color: #fef2f7;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
+
+        @media (max-width: 576px) {
+            .message-paragraph {
+                font-size: 1rem;
+                line-height: 1.65;
+            }
+            .love-card {
+                padding: 2rem 1.5rem !important;
+            }
+            .display-6 {
+                font-size: 1.6rem;
+            }
+        }
+
+        .signature {
+            font-family: 'Poppins', sans-serif;
+            letter-spacing: 1px;
+            border-top: 1px solid rgba(255,200,220,0.4);
+        }
+
+        .btn-celebrate {
+            background: linear-gradient(135deg, #ff7e9e, #ff5175);
+            border: none;
+            padding: 0.7rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: 0.2s;
+            box-shadow: 0 8px 20px rgba(255, 81, 117, 0.3);
+        }
+
+        .btn-celebrate:hover {
+            transform: scale(1.03);
+            background: linear-gradient(135deg, #ff6588, #ff3a62);
+            color: white;
+        }
+
+        /* subtle reveal animation */
+        @keyframes gentleRise {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-gentle {
+            animation: gentleRise 1s ease-out forwards;
+        }
+
+        /* confetti canvas */
+        #confetti-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 999;
+        }
+    </style>
 </head>
 <body>
-  <div class="card">
-    <img src="assets/images/illustration-article.svg" alt="Article Image" class="thumbnail">
-    <span class="tag">Learning</span>
-    <p class="date">Published 21 Dec 2023</p>
-    <h1>HTML & CSS foundations</h1>
-    <p class="description">These languages are the backbone of every website, defining structure, content, and presentation.</p>
-    <div class="author">
-      <img src="assets/images/image-avatar.webp" alt="Greg Hooper">
-      <span>Greg Hooper</span>
+
+<div class="message-container">
+    <div class="love-card p-4 p-md-5 text-center animate-gentle">
+        <!-- small decorative icon row -->
+        <div class="mb-4">
+            <span class="birthday-badge">
+                <i class="fas fa-gem me-2"></i> 23rd BIRTHDAY · FOR YOU
+            </span>
+        </div>
+        
+        <!-- heart icon animation -->
+        <div class="mb-3">
+            <i class="fas fa-heart" style="color: #ff88aa; font-size: 2.5rem; filter: drop-shadow(0 0 6px #ff99bb);"></i>
+        </div>
+
+        <!-- THE MAIN SURPRISE MESSAGE - ONE BEAUTIFUL PARAGRAPH -->
+        <div class="message-paragraph text-start mx-auto" style="max-width: 90%;">
+            <p class="mb-0">
+                As you turn 23 Bing, I want you to pause for just a moment and feel this 
+                no matter how many miles stretch between us right now, my heart has never left your side. 
+                I’ve been planning this surprise for weeks, not because I needed a reason to celebrate you, 
+                but because you deserve to know just how deeply, how completely, and how endlessly you are loved. 
+                This isn’t just a birthday message; it’s every thought I’ve had when the distance felt too heavy, 
+                every smile you’ve given me that lit up my darkest days, and every promise I whisper to the stars at night — 
+                that one day soon, we won’t have to count time zones anymore. Twenty-three years of you gracing this world, 
+                 So here’s my gift to you: not something wrapped in paper, 
+              
+        </div>
+
+        <!-- intimate signature with distance reference -->
+        <div class="signature mt-5 pt-3 d-flex flex-wrap justify-content-between align-items-center">
+            <div class="text-start">
+                <i class="fas fa-map-marker-alt me-1" style="color: #ffb0c3;"></i>
+                <span style="font-size: 0.85rem; color: #d9c8f0;">miles apart · hearts together</span>
+            </div>
+            <div class="text-end mt-2 mt-sm-0">
+                <span style="font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 500;">Forever yours,</span><br>
+                <span style="font-weight: 600; letter-spacing: 1px;">[Your Name]</span>
+                <i class="fas fa-feather-alt ms-1" style="color: #ffbfa0;"></i>
+            </div>
+        </div>
+
+        <!-- small surprise button for extra joy -->
+        <div class="mt-4 text-center">
+            <button id="extraSparkleBtn" class="btn-celebrate btn">
+                <i class="fas fa-star me-2"></i> Make a wish & celebrate
+            </button>
+        </div>
+        <p class="mt-3 small" style="color: #bbaadd; opacity: 0.8;">
+            <i class="fas fa-lock me-1"></i> This moment is just for you — private, intimate, ours.
+        </p>
     </div>
-  </div>
+</div>
+
+<!-- canvas for confetti effects -->
+<canvas id="confetti-canvas"></canvas>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1"></script>
+<script>
+    (function() {
+        // create floating hearts in background for romantic atmosphere
+        function createFloatingHeart() {
+            const heart = document.createElement('div');
+            const hearts = ['❤️', '💖', '💗', '💕', '💓', '✨', '🌸'];
+            heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+            heart.classList.add('floating-heart-bg');
+            const size = Math.random() * 16 + 12;
+            heart.style.fontSize = size + 'px';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.bottom = '-30px';
+            heart.style.position = 'fixed';
+            heart.style.opacity = Math.random() * 0.6 + 0.3;
+            heart.style.zIndex = '1';
+            document.body.appendChild(heart);
+            
+            const duration = Math.random() * 5 + 4;
+            heart.style.animation = `floatHeart ${duration}s ease-out forwards`;
+            
+            setTimeout(() => {
+                if (heart && heart.remove) heart.remove();
+            }, duration * 1000);
+        }
+        
+        // generate hearts periodically
+        let heartInterval = setInterval(() => {
+            if (document.body) {
+                createFloatingHeart();
+            }
+        }, 1800);
+        
+        // optional: stop after 40 seconds to not overload, but it's fine
+        setTimeout(() => {
+            if (heartInterval) clearInterval(heartInterval);
+        }, 40000);
+        
+        // confetti + extra joy on button click
+        const sparkleBtn = document.getElementById('extraSparkleBtn');
+        if (sparkleBtn) {
+            sparkleBtn.addEventListener('click', function(e) {
+                // burst of colorful confetti
+                canvasConfetti({
+                    particleCount: 180,
+                    spread: 85,
+                    origin: { y: 0.6 },
+                    colors: ['#ff99cc', '#ffc0cb', '#ffb3ba', '#ffdfb3', '#c7e9ff', '#d4b0ff'],
+                    startVelocity: 18,
+                    decay: 0.9
+                });
+                // secondary burst from left
+                canvasConfetti({
+                    particleCount: 80,
+                    angle: 60,
+                    spread: 55,
+                    origin: { x: 0, y: 0.7 },
+                    colors: ['#ff8aa8', '#ffb77c', '#f7c5e0']
+                });
+                // secondary burst from right
+                canvasConfetti({
+                    particleCount: 80,
+                    angle: 120,
+                    spread: 55,
+                    origin: { x: 1, y: 0.7 },
+                    colors: ['#ff9fbb', '#ffe0a3', '#cfaaff']
+                });
+                // falling hearts effect using custom
+                for (let i = 0; i < 30; i++) {
+                    setTimeout(() => {
+                        canvasConfetti({
+                            particleCount: 3,
+                            spread: 30,
+                            origin: { x: Math.random(), y: Math.random() * 0.5 },
+                            startVelocity: 10,
+                            colors: ['#ff5e8e', '#ff8eb5', '#ffb7d0'],
+                            shapes: ['heart']
+                        });
+                    }, i * 60);
+                }
+                // also add floating hearts manually again
+                for(let i=0;i<12;i++) {
+                    setTimeout(() => createFloatingHeart(), i*150);
+                }
+                // optional: show a tiny alert / but not intrusive, just joy
+                const tempMsg = document.createElement('div');
+                tempMsg.innerText = '✨ Your wish is being sent across the miles ✨';
+                tempMsg.style.position = 'fixed';
+                tempMsg.style.bottom = '20px';
+                tempMsg.style.left = '50%';
+                tempMsg.style.transform = 'translateX(-50%)';
+                tempMsg.style.backgroundColor = 'rgba(0,0,0,0.7)';
+                tempMsg.style.color = '#ffddf4';
+                tempMsg.style.padding = '10px 20px';
+                tempMsg.style.borderRadius = '40px';
+                tempMsg.style.fontSize = '0.85rem';
+                tempMsg.style.backdropFilter = 'blur(8px)';
+                tempMsg.style.zIndex = '1000';
+                tempMsg.style.fontFamily = 'Poppins, sans-serif';
+                tempMsg.style.pointerEvents = 'none';
+                document.body.appendChild(tempMsg);
+                setTimeout(() => tempMsg.remove(), 2800);
+            });
+        }
+        
+        // initial gentle confetti when page loads (subtle birthday surprise)
+        setTimeout(() => {
+            canvasConfetti({
+                particleCount: 100,
+                spread: 60,
+                origin: { y: 0.5 },
+                startVelocity: 12,
+                colors: ['#ff98bb', '#ffd0a4', '#e7bcff'],
+                decay: 0.9
+            });
+            canvasConfetti({
+                particleCount: 40,
+                angle: 90,
+                spread: 40,
+                origin: { x: 0.2, y: 0.6 },
+                colors: ['#ffa7c2']
+            });
+            canvasConfetti({
+                particleCount: 40,
+                angle: 90,
+                spread: 40,
+                origin: { x: 0.8, y: 0.6 },
+                colors: ['#ffa7c2']
+            });
+        }, 300);
+        
+        // private message: protect from unwanted screenshots? just adds a layer of intimacy
+        // optional: just a console log to mark private moment
+        console.log("💌 A private birthday message just for her — cherished moment.");
+    })();
+</script>
+
+<!-- ensure that on mobile the view is fully responsive -->
 </body>
-</html>
+  </html>
